@@ -157,8 +157,7 @@ public class Jugador {
 			return true;
 		}catch(Exception e){
 			return false;
-		}
-		
+		}	
 	}
 	
 	public void escribir (String s) {

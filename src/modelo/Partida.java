@@ -20,6 +20,7 @@ public class Partida {
 	
 	public void asignarBarcos (Jugador j) {
 		j.mostrarTablero(j.getTableroPropio());
+		normas(j);
 		
 		Barco b1 = new Barco(1);
 		j.addBarco(b1, 0);
@@ -96,6 +97,11 @@ public class Partida {
 			j2.getTableroPropio().setCasillaAgua(coordenada/10, coordenada%10);
 		}	
 		
+	}
+	
+	public void normas(Jugador j) {
+		j.escribir("1.Los barcos no se pueden tocar entre ellos\n");
+		j.escribir("2.Los barcos deben seguir una linea horizontal o vertical\n");
 	}
 	
 }

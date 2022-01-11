@@ -21,10 +21,10 @@ public class Cliente {
 			writer.write(teclado.nextLine()+"\n");
 			writer.flush();
 			
-			for(int j =0;j<32;j++) {
+			for(int j =0;j<34;j++) {
 				System.out.println(reader.readLine());
 			}	
-			for(int i = 0; i<5;i++) {
+			for(int i = 0; i<10;i++) {
 				System.out.println(reader.readLine());
 				System.out.println(reader.readLine());
 				if(i<4) {
