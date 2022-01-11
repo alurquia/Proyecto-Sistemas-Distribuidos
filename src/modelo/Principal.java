@@ -1,3 +1,4 @@
+package modelo;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -13,8 +14,9 @@ public class Principal {
 		try(ServerSocket socket = new ServerSocket (8080)) {
 			while (true ) {
 				try {
-					Socket conexion = socket.accept();
-					pool.execute(new AtenderPeticion(conexion));
+					Socket conexion1 = socket.accept();
+					Socket conexion2 = socket.accept();
+					pool.execute(new AtenderPeticion(conexion1, conexion2));
 				}catch(IOException e) {
 					e.printStackTrace();
 				}
