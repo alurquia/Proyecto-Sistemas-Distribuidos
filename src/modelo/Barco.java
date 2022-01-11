@@ -13,7 +13,7 @@ public class Barco {
 	}
 
 	public int getTamaño() {
-		return tamaño;
+		return this.tamaño;
 	}
 
 	public void setTamaño(int tamaño) {
@@ -21,7 +21,7 @@ public class Barco {
 	}
 
 	public boolean isHundido() {
-		return hundido;
+		return this.hundido;
 	}
 
 	public void setHundido(boolean hundido) {

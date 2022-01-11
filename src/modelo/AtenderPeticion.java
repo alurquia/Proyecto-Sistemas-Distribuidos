@@ -33,9 +33,9 @@ public class AtenderPeticion implements Runnable{
 			String nombre2 = in2.readLine();
 			System.out.println("Hola "+nombre2);
 			
-			Jugador jugador1 = new Jugador(this.s1,nombre1);
+			Jugador jugador1 = new Jugador(out1,in1,nombre1);
 			System.out.println("Creado jugador1");
-			Jugador jugador2 = new Jugador(this.s2,nombre2);
+			Jugador jugador2 = new Jugador(out2,in2,nombre2);
 			System.out.println("Creado jugador2");
 			Partida p = new Partida(jugador1,jugador2);	
 			

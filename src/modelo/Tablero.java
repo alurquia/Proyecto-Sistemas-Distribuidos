@@ -1,4 +1,6 @@
 package modelo;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,13 +10,13 @@ import java.util.concurrent.Executors;
 public class Tablero {
 
 	private String[][] casillas;
-	private Socket s;
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_RESET = "\u001B[0m";
+	private BufferedWriter writer;
+	private BufferedReader reader;
 	
-	public Tablero(Socket s) {
+	public Tablero(BufferedWriter bw,BufferedReader br) {
 		this.casillas = new String[10][10];
-		this.s = s;
+		this.writer = bw;
+		this.reader = br;
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				this.casillas[i][j] = " ";
@@ -23,11 +25,11 @@ public class Tablero {
 	}
 	
 	public void setCasillaBarco(int i, int j) {
-		this.casillas[i][j]= "X";
+		this.casillas[i][j]= "B";
 	}
 	
 	public void setCasillaBarcoGolpeado(int i, int j) {
-		this.casillas[i][j]= ANSI_RED+"X"+ANSI_RESET;
+		this.casillas[i][j]= "X";
 	}
 	
 	public void setCasillaAgua(int i, int j) {
@@ -35,10 +37,10 @@ public class Tablero {
 	}
 	
 	public int getCasilla(int i, int j) {
-		if(this.casillas[i][j] == "O") {
-			return 0;
-		}else {
+		if(this.casillas[i][j] == "B") {
 			return 1;
+		}else {
+			return 0;
 		}
 	}
 	
@@ -63,8 +65,8 @@ public class Tablero {
 	
 	public void escribir (String s) {
 		try {
-			this.s.getOutputStream().write(s.getBytes());
-			//es posible tener que mandar un \n
+			this.writer.write(s);
+			this.writer.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

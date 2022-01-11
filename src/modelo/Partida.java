@@ -10,7 +10,7 @@ public class Partida {
 		System.out.println("Creada partida");
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
-		this.ganador = "pedro";
+		this.ganador = null;
 		asignarBarcos(jugador1);
 		System.out.println("Asignados barcos j1");
 		asignarBarcos(jugador2);
@@ -64,37 +64,38 @@ public class Partida {
 	
 	public void iniciarPartida() {
 		while(this.ganador == null) {
-			this.jugador1.escribir("No hay ganador");
+			this.jugador1.escribir("No hay ganador\n");
 			turno(jugador1, jugador2);
-			this.jugador2.escribir("No hay ganador");
-			turno(jugador2, jugador1);
+			if(this.ganador == null) {
+				this.jugador2.escribir("No hay ganador\n");
+				turno(jugador2, jugador1);
+			}
 		}
-		this.jugador1.escribir("Hay ganador");
-		this.jugador2.escribir("Hay ganador");
-		this.jugador1.escribir("El ganador es "+ganador);
-		this.jugador2.escribir("El ganador es "+ganador);
+		this.jugador1.escribir("Hay ganador\n");
+		this.jugador2.escribir("Hay ganador\n");
+		this.jugador1.escribir("El ganador es "+ganador+"\n");
+		this.jugador2.escribir("El ganador es "+ganador+"\n");
 	}
 	
 	public void turno(Jugador j, Jugador j2) {
-		j.escribir("                                       TU TURNO     ");
-		j.escribir("                                      TU TABLERO     ");
+		j.escribir("                                       TU TURNO     \n");
+		j.escribir("                                      TU TABLERO     \n");
 		j.mostrarTablero(j.getTableroPropio());
-		j.escribir("                                     TABLERO RIVAL     ");
+		j.escribir("                                     TABLERO RIVAL     \n");
 		j.mostrarTablero(j.getTableroRival());
 		int coordenada = j.atacarCasilla();
-		//j2.escribir(coordenada+"");
 		if(j2.getTableroPropio().getCasilla(coordenada/10, coordenada%10) == 1) {
-			j.getTableroRival().setCasillaBarco(coordenada/10, coordenada%10);
+			j.getTableroRival().setCasillaBarcoGolpeado(coordenada/10, coordenada%10);
 			j2.getTableroPropio().setCasillaBarcoGolpeado(coordenada/10, coordenada%10);
 			j2.eliminarCoordenada(coordenada);
+			if(j2.getNumBarcos()== 0) {
+				this.ganador = j.getNombre();
+			}
 		}else {
 			j.getTableroRival().setCasillaAgua(coordenada/10, coordenada%10);
-			j2.getTableroRival().setCasillaAgua(coordenada/10, coordenada%10);
+			j2.getTableroPropio().setCasillaAgua(coordenada/10, coordenada%10);
 		}	
 		
-		if(j2.getNumBarcos()== 0) {
-			this.ganador = j.getNombre();
-		}
 	}
 	
 }

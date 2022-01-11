@@ -28,38 +28,79 @@ public class Cliente {
 				System.out.println(reader.readLine());
 				System.out.println(reader.readLine());
 				if(i<4) {
-					System.out.println(reader.readLine());
-					writer.write(teclado.nextLine());
-					
-					System.out.println(reader.readLine());
-					writer.write(teclado.nextLine());
+					int x=-1,y=-1;
+					while(x<0||x>9||y<0||y>9) {
+						System.out.println(reader.readLine());
+						String str1=teclado.nextLine();
+						String str2=str1+"\n";
+						writer.write(str2);
+						x = Integer.parseInt(str1);
+						writer.flush();
+						
+						System.out.println(reader.readLine());
+						str1=teclado.nextLine();
+						str2=str1+"\n";
+						writer.write(str2);
+						y = Integer.parseInt(str1);
+						writer.flush();
+					}
 					
 				}else if(i<7) {
 					for(int j = 0; j<2;j++) {
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
+						int x=-1,y=-1;
+						while(x<0||x>9||y<0||y>9) {
+							System.out.println(reader.readLine());
+							String str1=teclado.nextLine();
+							String str2=str1+"\n";
+							writer.write(str2);
+							x = Integer.parseInt(str1);
+							writer.flush();
+							
+							System.out.println(reader.readLine());
+							str1=teclado.nextLine();
+							str2=str1+"\n";
+							writer.write(str2);
+							y = Integer.parseInt(str1);
+							writer.flush();
+						}
 					}
 				}else if(i<9) {
 					for(int k = 0; k<3;k++) {
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
+						int x=-1,y=-1;
+						while(x<0||x>9||y<0||y>9) {
+							System.out.println(reader.readLine());
+							String str1=teclado.nextLine();
+							String str2=str1+"\n";
+							writer.write(str2);
+							x = Integer.parseInt(str1);
+							writer.flush();
+							
+							System.out.println(reader.readLine());
+							str1=teclado.nextLine();
+							str2=str1+"\n";
+							writer.write(str2);
+							y = Integer.parseInt(str1);
+							writer.flush();
+						}
 					}
 				}else {
 					for(int l = 0; l<4;l++) {
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
-						System.out.println(reader.readLine());
-						writer.write(teclado.nextLine());
-						writer.flush();
+						int x=-1,y=-1;
+						while(x<0||x>9||y<0||y>9) {
+							System.out.println(reader.readLine());
+							String str1=teclado.nextLine();
+							String str2=str1+"\n";
+							writer.write(str2);
+							x = Integer.parseInt(str1);
+							writer.flush();
+							
+							System.out.println(reader.readLine());
+							str1=teclado.nextLine();
+							str2=str1+"\n";
+							writer.write(str2);
+							y = Integer.parseInt(str1);
+							writer.flush();
+						}
 					}
 				}
 				
@@ -71,10 +112,29 @@ public class Cliente {
 				
 			}
 			
-			while(reader.readLine()=="No hay ganador") {
+			String bucle =reader.readLine();
+			while(bucle.equals("No hay ganador")) {
 				for(int i = 0; i < 68;i++){
 					System.out.println(reader.readLine());
 				}
+				int x=-1,y=-1;
+				while(x<0||x>9||y<0||y>9) {
+					System.out.println(reader.readLine());
+					String str1=teclado.nextLine();
+					String str2=str1+"\n";
+					writer.write(str2);
+					x = Integer.parseInt(str1);
+					writer.flush();
+					
+					System.out.println(reader.readLine());
+					str1=teclado.nextLine();
+					str2=str1+"\n";
+					writer.write(str2);
+					y = Integer.parseInt(str1);
+					writer.flush();
+				}
+				
+				bucle = reader.readLine();
 			}
 			System.out.println(reader.readLine());
 			
