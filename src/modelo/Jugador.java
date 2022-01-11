@@ -99,14 +99,23 @@ public class Jugador {
 		escribir("Seleccione donde poner el barco de "+tam+"\n");
 		escribir("Selecciona las casillas para el barco (deben ser numeros entre 0 y 9)\n");
 		int x=-1,y=-1;
+		boolean valid1=false,valid2=false;
 		
 		for(int i=0;i<tam;i++) {
 			
-			while(x<0||x>9||y<0||y>9) {
+			while(!valid1 || !valid2 || (x<0||x>9||y<0||y>9)) {
 				escribir("Coordenada Y:\n");
-				y = Integer.parseInt(leer());
+				String read =leer();
 				escribir("Coordenada X\n");
-				x = Integer.parseInt(leer());
+				String read2 = leer();
+				
+				valid1=validar(read);
+				valid2=validar(read2);
+				
+				if(valid1 && valid2) {
+					y = Integer.parseInt(read);
+					x = Integer.parseInt(read2);
+				}
 			}
 			this.tableroPropio.setCasillaBarco(y,x);
 			b.addCoordenada(y*10+x, i);
@@ -119,17 +128,37 @@ public class Jugador {
 	
 	public int atacarCasilla() {
 		int x=-1,y=-1;
+		boolean valid1=false,valid2=false;
 		
 		escribir("Selecciona la casilla a atacar (deben ser numeros entre 0 y 9)\n");
 		
-		while(x<0||x>9||y<0||y>9) {
+		while(!valid1 || !valid2 || (x<0||x>9||y<0||y>9)) {
 			escribir("Coordenada Y:\n");
-			y = Integer.parseInt(leer());
+			String read =leer();
 			escribir("Coordenada X\n");
-			x = Integer.parseInt(leer());
+			String read2 = leer();
+			
+			valid1=validar(read);
+			valid2=validar(read2);
+			
+			if(valid1 && valid2) {
+				y = Integer.parseInt(read);
+				x = Integer.parseInt(read2);
+			}
 		}
 		
 		return y*10+x;
+	}
+	
+	public boolean validar(String s) {
+		int num;
+		try {
+			num = Integer.parseInt(s);
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+		
 	}
 	
 	public void escribir (String s) {
